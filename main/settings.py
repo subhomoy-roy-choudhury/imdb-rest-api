@@ -26,14 +26,14 @@ SECRET_KEY = 'django-insecure-+ihypav^rtad&u_2wiq96==t-0)2!mj5zj4bfzdlfmd_i58a+y
 DEBUG=False
 
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
-CSRF_TRUSTED_ORIGINS = [
-    '.herokuapp.com'
-]
+# CSRF_TRUSTED_ORIGINS = [
+#     '.herokuapp.com'
+# ]
 
 
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,8 +41,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+]
+
+THIRD_PARTY_APPS = [
+    'rest_framework',
+    'drf_yasg'
+]
+
+LOCAL_APPS = [
     'backend'
 ]
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
