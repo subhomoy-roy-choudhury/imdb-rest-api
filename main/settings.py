@@ -45,14 +45,15 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     'rest_framework',
-    'drf_yasg'
+    'drf_yasg',
+    'jazzmin'
 ]
 
 LOCAL_APPS = [
     'backend'
 ]
 
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = THIRD_PARTY_APPS + DJANGO_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -146,3 +147,13 @@ STATIC_ROOT = BASE_DIR / 'static'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+############ Admin Customization #################
+
+JAZZMIN_SETTINGS = {
+    "show_ui_builder" : True
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "simplex",                   ####simplex,darkly,sketchy,slate
+}
