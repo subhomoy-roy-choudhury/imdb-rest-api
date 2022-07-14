@@ -8,6 +8,7 @@ from drf_yasg.utils import swagger_auto_schema
 from .models import Movie
 from .serializer import MovieSerializer
 from main.pagination import MainLimitOffsetPagination
+from django.db.models import Q
 
 from .swagger import SEARCH_QUERY_PARAM, LIMIT_PARAM, OFFSET_PARAM
 # Create your views here.
@@ -26,7 +27,7 @@ class SearchMovieAPI(APIView, MainLimitOffsetPagination):
 
     def get(self, request):
         search_query = request.GET.get('search_query','')
-        movie_data = Movie.objects.filter(name__icontains=search_query)
+        movie_data = Movie.objects.filter(Q(name__contains=search_query) | Q(director__contains=search_query))
         serialized_movie_list = MovieSerializer(movie_data, many=True).data
         results = self.paginate_queryset(serialized_movie_list, request, view=self)
         return self.get_paginated_response(results)
