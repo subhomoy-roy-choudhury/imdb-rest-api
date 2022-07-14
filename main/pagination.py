@@ -4,8 +4,8 @@ from rest_framework import status
 
 class MainLimitOffsetPagination(LimitOffsetPagination):
     default_limit = 10
-    limit_query_param = 'l'
-    offset_query_param = 'o'
+    limit_query_param = 'limit'
+    offset_query_param = 'offset'
     max_limit = 50
 
     def paginate_queryset(self, queryset, request, view=None):
