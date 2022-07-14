@@ -10,7 +10,6 @@ class MainLimitOffsetPagination(LimitOffsetPagination):
 
     def paginate_queryset(self, queryset, request, view=None):
         self.limit = int(request.GET.get('limit',self.get_limit(request)))
-        print(self.limit)
         if self.limit is None:
             return None
 

@@ -27,7 +27,6 @@ class SearchMovieAPI(APIView, MainLimitOffsetPagination):
     def get(self, request):
         search_query = request.GET.get('search_query','')
         movie_data = Movie.objects.filter(name__icontains=search_query)
-        
         serialized_movie_list = MovieSerializer(movie_data, many=True).data
         results = self.paginate_queryset(serialized_movie_list, request, view=self)
         return self.get_paginated_response(results)
